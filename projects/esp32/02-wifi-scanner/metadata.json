@@ -1,0 +1,83 @@
+{
+  "id": "esp32-wifi-passive-scan-002",
+  "name": "ESP32 Passive Wi-Fi Scanner",
+  "slug": "02-wifi-scanner",
+  "board_family": "ESP32",
+  "board_model": "Espressif ESP32-DevKitC-32UE",
+  "module": "ESP32-WROOM-32UE",
+  "chip_detected": "ESP32-D0WD-V3, revision 3.1 (recorded during prior board bring-up)",
+  "category": [
+    "Wireless and networking"
+  ],
+  "difficulty": "beginner",
+  "status": "built-with-limitations",
+  "built_date": "2026-10-31",
+  "languages": [
+    "C++"
+  ],
+  "framework": "Arduino-ESP32",
+  "framework_version": "3.3.12",
+  "ide": "Arduino IDE 2.3.10",
+  "host_os": "Fedora Linux (user-reported environment)",
+  "interfaces": [
+    "2.4 GHz Wi-Fi passive scan",
+    "USB serial"
+  ],
+  "technologies": [
+    "Wi-Fi scanning",
+    "RSSI",
+    "802.11 channels",
+    "authentication-mode reporting",
+    "serial output"
+  ],
+  "difficulty_reason": "Uses the ESP32 Wi-Fi API and serial output; no external circuit or third-party library is required.",
+  "estimated_build_time_minutes": 45,
+  "extra_hardware_required": false,
+  "uses_breadboard": false,
+  "uses_external_antenna": true,
+  "antenna_connection_verified_in_captured_run": false,
+  "estimated_extra_cost_inr": 0,
+  "validation": {
+    "firmware_runtime_observed": true,
+    "repeated_scans_observed": true,
+    "scan_count_observed_min": 1,
+    "scan_count_observed_max": 5,
+    "rssi_observed_min_dbm": -96,
+    "rssi_observed_max_dbm": -36,
+    "observed_channels": [
+      1,
+      2,
+      3,
+      8
+    ],
+    "advertised_security_modes_observed": [
+      "WPA2"
+    ],
+    "serial_baud": 115200,
+    "serial_output_noise": "Occasional malformed/replacement characters were present around startup and between some scan blocks; cause not determined.",
+    "privacy": "Nearby SSID names omitted from public evidence.",
+    "evidence": "User-provided Serial Monitor output from repeated physical scans; raw SSID names are not retained in this metadata."
+  },
+  "limitations": [
+    "Original ESP32 Wi-Fi is 2.4 GHz only; no 5 GHz scan.",
+    "Passive scan can miss weak or intermittent access points.",
+    "Intermittent serial-output noise remains unexplained.",
+    "Antenna connection state was not separately recorded during the captured scan run."
+  ],
+  "tags": [
+    "esp32",
+    "wifi",
+    "passive-scan",
+    "rssi",
+    "channels",
+    "wpa2",
+    "wireless-recon",
+    "beginner"
+  ],
+  "references": [
+    "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html",
+    "https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/wifi.html",
+    "https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf",
+    "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html"
+  ]
+}
