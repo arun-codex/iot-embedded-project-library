@@ -1,2 +1,3 @@
 id,name,board_family,board_model,difficulty,status,category,languages,technologies,built_date,guide
 esp32-hello-serial-001,"Hello, ESP32! — serial bring-up",ESP32,ESP32-DevKitC-32UE,beginner,built-and-verified,Embedded foundations,C++,"serial communication;firmware upload",2026-10-31,projects/esp32/01-hello-esp32/README.md
+esp32-wifi-passive-scan-002,"ESP32 Passive Wi-Fi Scanner",ESP32,ESP32-DevKitC-32UE,beginner,built-with-limitations,Wireless and networking,C++,"Wi-Fi passive scanning;RSSI;802.11 channels;serial output",2026-10-31,projects/esp32/02-wifi-scanner/README.md
