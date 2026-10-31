@@ -2,7 +2,7 @@
 
 A build-log-driven catalogue of IoT, electronics, embedded and board projects. **A project is added to the catalogue only after it has actually been built and its results have been checked.** Ideas, wish lists and untested code do not count as projects here.
 
-> Current catalogue: **2 completed hardware projects**. This is intentionally not padded to a target count. The library grows as projects are completed and documented.
+> Current catalogue: **2 completed and verified hardware projects**. This is intentionally not padded to a target count. The library grows as projects are completed and documented.
 
 ## What this repository is
 
@@ -51,11 +51,11 @@ This is a board bring-up exercise. It verifies the development toolchain, USB se
 
 - **Board:** Espressif ESP32-DevKitC-32UE (ESP32-WROOM-32UE module)
 - **Difficulty:** Beginner
-- **Status:** Built with limitations on 31 October 2026
-- **Result:** Repeated passive 2.4 GHz scans displayed SSID, RSSI, channel and advertised security mode. One to five networks were observed per scan in the supplied session.
-- **Known limitation:** Occasional malformed serial characters appeared around some output blocks; their cause has not been isolated. Nearby SSID names are omitted from public evidence for privacy.
+- **Status:** Built and verified on 31 October 2026
+- **Result:** Repeated passive 2.4 GHz scans displayed SSID, RSSI, channel and advertised security mode. One to five networks were observed per scan across the supplied sessions.
+- **Validation:** A separate serial-only diagnostic ran cleanly for 32 messages; the fresh scanner retest also showed readable repeated scan tables at 115200 baud. The earlier malformed serial output was not reproduced. Its original cause was not conclusively determined.
 
-The scan is a local observation exercise. It does not join networks, collect credentials, capture user traffic or disrupt wireless communications.
+The scan is a local observation exercise. It does not join networks, collect credentials, capture user traffic or disrupt wireless communications. Nearby SSID names are omitted from public test evidence for privacy.
 
 ## Repository structure
 
