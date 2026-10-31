@@ -1,0 +1,27 @@
+# Build outputs
+build/
+.pio/
+.arduino/
+*.elf
+*.bin
+*.hex
+*.map
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local secrets and settings
+.env
+.env.*
+!.env.example
+secrets.json
+credentials.h
+
+# Editor and OS noise
+.vscode/
+.idea/
+.DS_Store
+*~

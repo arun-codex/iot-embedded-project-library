@@ -1,0 +1,40 @@
+{
+  "id": "esp32-hello-serial-001",
+  "name": "Hello, ESP32! — serial bring-up",
+  "slug": "01-hello-esp32",
+  "board_family": "ESP32",
+  "board_model": "Espressif ESP32-DevKitC-32UE",
+  "module": "ESP32-WROOM-32UE",
+  "chip_detected": "ESP32-D0WD-V3, revision 3.1 (reported by esptool)",
+  "category": ["Embedded foundations"],
+  "difficulty": "beginner",
+  "status": "built-and-verified",
+  "built_date": "2026-10-31",
+  "languages": ["C++"],
+  "framework": "Arduino-ESP32",
+  "framework_version": "3.3.12",
+  "ide": "Arduino IDE 2.3.10",
+  "host_os": "Fedora Linux (user-reported environment)",
+  "interfaces": ["USB serial", "UART0"],
+  "technologies": ["embedded C++", "serial communication", "firmware upload"],
+  "difficulty_reason": "No external circuit or library is required; the exercise verifies the toolchain and serial output.",
+  "estimated_build_time_minutes": 20,
+  "extra_hardware_required": false,
+  "uses_breadboard": false,
+  "uses_external_antenna": false,
+  "estimated_extra_cost_inr": 0,
+  "validation": {
+    "firmware_uploaded": true,
+    "flash_verification": "esptool reported hash verified",
+    "serial_output_observed": true,
+    "serial_baud": 115200,
+    "observed_usb_port": "/dev/ttyUSB0 (port names can change)",
+    "evidence": "User-provided Arduino IDE upload log and Serial Monitor screenshot in the build conversation; raw screenshot is not packaged here."
+  },
+  "tags": ["first-upload", "hello-world", "serial-monitor", "beginner", "esp32-devkitc-32ue"],
+  "references": [
+    "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html",
+    "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/serial.html",
+    "https://docs.espressif.com/projects/arduino-esp32/en/latest/getting_started.html"
+  ]
+}

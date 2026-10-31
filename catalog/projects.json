@@ -1,0 +1,16 @@
+[
+  {
+    "id": "esp32-hello-serial-001",
+    "name": "Hello, ESP32! — serial bring-up",
+    "path": "projects/esp32/01-hello-esp32/README.md",
+    "board_family": "ESP32",
+    "board_model": "ESP32-DevKitC-32UE",
+    "difficulty": "beginner",
+    "status": "built-and-verified",
+    "category": ["Embedded foundations"],
+    "languages": ["C++"],
+    "technologies": ["serial communication", "firmware upload"],
+    "tags": ["first-upload", "hello-world", "serial-monitor"],
+    "built_date": "2026-10-31"
+  }
+]

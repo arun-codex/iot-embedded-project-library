@@ -1,0 +1,2 @@
+id,name,board_family,board_model,difficulty,status,category,languages,technologies,built_date,guide
+esp32-hello-serial-001,"Hello, ESP32! — serial bring-up",ESP32,ESP32-DevKitC-32UE,beginner,built-and-verified,Embedded foundations,C++,"serial communication;firmware upload",2026-10-31,projects/esp32/01-hello-esp32/README.md

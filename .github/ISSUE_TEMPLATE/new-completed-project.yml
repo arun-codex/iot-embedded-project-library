@@ -1,0 +1,34 @@
+name: Add a completed project
+description: Document a project only after it has been built and tested.
+title: "[Completed project]: "
+labels: [documentation]
+body:
+  - type: checkboxes
+    id: completion
+    attributes:
+      label: Completion gate
+      options:
+        - label: I built this on the stated board or clearly identified simulator.
+          required: true
+        - label: I tested the intended behavior and recorded the actual result.
+          required: true
+        - label: I included complete code, BOM, wiring, steps and troubleshooting.
+          required: true
+  - type: input
+    id: board
+    attributes:
+      label: Exact board and module
+    validations:
+      required: true
+  - type: input
+    id: build_date
+    attributes:
+      label: Build date (YYYY-MM-DD)
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Test evidence and limitations
+    validations:
+      required: true

@@ -1,0 +1,20 @@
+{
+  "id": "unique-id",
+  "name": "Project name",
+  "slug": "project-folder-name",
+  "board_family": "exact board family",
+  "board_model": "exact board model",
+  "category": [],
+  "difficulty": "beginner",
+  "status": "built-and-verified",
+  "built_date": "YYYY-MM-DD",
+  "languages": [],
+  "framework": "",
+  "framework_version": "",
+  "interfaces": [],
+  "technologies": [],
+  "extra_hardware_required": true,
+  "estimated_extra_cost_inr": null,
+  "tags": [],
+  "references": []
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "family": "ESP32",
+    "selected": true,
+    "tested_in_repository": true,
+    "tested_model": "ESP32-DevKitC-32UE",
+    "completed_project_count": 1,
+    "note": "One physical board bring-up project has been completed and documented."
+  },
+  {
+    "family": "ESP8266",
+    "selected": true,
+    "tested_in_repository": false,
+    "tested_model": null,
+    "completed_project_count": 0,
+    "note": "No completed project is documented for this board family yet."
+  },
+  {
+    "family": "Arduino",
+    "selected": true,
+    "tested_in_repository": false,
+    "tested_model": null,
+    "completed_project_count": 0,
+    "note": "No completed project is documented for this board family yet. Specify the exact Arduino model when one is used."
+  },
+  {
+    "family": "Raspberry Pi Pico",
+    "selected": true,
+    "tested_in_repository": false,
+    "tested_model": null,
+    "completed_project_count": 0,
+    "note": "No completed project is documented for this board family yet. Specify Pico or Pico W when one is used."
+  }
+]
