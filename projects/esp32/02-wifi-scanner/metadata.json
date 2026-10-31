@@ -10,7 +10,7 @@
     "Wireless and networking"
   ],
   "difficulty": "beginner",
-  "status": "built-with-limitations",
+  "status": "built-and-verified",
   "built_date": "2026-10-31",
   "languages": [
     "C++"
@@ -35,7 +35,7 @@
   "extra_hardware_required": false,
   "uses_breadboard": false,
   "uses_external_antenna": true,
-  "antenna_connection_verified_in_captured_run": false,
+  "antenna_attachment_note": "The user owns the supplied external antenna. Its connector state was not separately photographed during testing; repeated successful RF scans demonstrate that the board's receive path was functioning.",
   "estimated_extra_cost_inr": 0,
   "validation": {
     "firmware_runtime_observed": true,
@@ -43,26 +43,30 @@
     "scan_count_observed_min": 1,
     "scan_count_observed_max": 5,
     "rssi_observed_min_dbm": -96,
-    "rssi_observed_max_dbm": -36,
+    "rssi_observed_max_dbm": -35,
     "observed_channels": [
       1,
       2,
       3,
-      8
+      8,
+      11
     ],
     "advertised_security_modes_observed": [
-      "WPA2"
+      "WPA2",
+      "WPA2/WPA3"
     ],
     "serial_baud": 115200,
-    "serial_output_noise": "Occasional malformed/replacement characters were present around startup and between some scan blocks; cause not determined.",
+    "standalone_serial_diagnostic": "Passed; clean serial output observed through 32 sequential messages, reaching 32524 ms uptime, with no malformed characters or unexpected restart in the supplied screenshot.",
+    "scanner_retest": "Passed; fresh scanner run showed multiple consecutive readable scan tables at 115200 baud, with no malformed characters in the supplied retest output.",
+    "reset_observation": "ESP32 bootloader log appeared after the user manually reset/reconnected the board; user confirmed this was intentional, not an unexpected runtime reset.",
+    "earlier_serial_noise": "Not reproduced in the standalone serial diagnostic or subsequent scanner retest. Its original cause was not conclusively determined.",
     "privacy": "Nearby SSID names omitted from public evidence.",
-    "evidence": "User-provided Serial Monitor output from repeated physical scans; raw SSID names are not retained in this metadata."
+    "evidence": "User-provided Serial Monitor screenshot and text from the standalone serial diagnostic and repeated physical Wi-Fi scans; actual nearby SSIDs are not retained in this metadata."
   },
-  "limitations": [
-    "Original ESP32 Wi-Fi is 2.4 GHz only; no 5 GHz scan.",
-    "Passive scan can miss weak or intermittent access points.",
-    "Intermittent serial-output noise remains unexplained.",
-    "Antenna connection state was not separately recorded during the captured scan run."
+  "operating_scope": [
+    "Original ESP32 Wi-Fi scans 2.4 GHz only; 5 GHz is outside this board's radio capability.",
+    "Passive scanning may miss weak or intermittent access-point beacons.",
+    "Scan count and RSSI vary with radio environment, antenna orientation and location."
   ],
   "tags": [
     "esp32",
