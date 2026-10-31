@@ -2,39 +2,39 @@
 
 A build-log-driven catalogue of IoT, electronics, embedded and board projects. **A project is added to the catalogue only after it has actually been built and its results have been checked.** Ideas, wish lists and untested code do not count as projects here.
 
-> Current catalogue: **1 built project**. This is intentionally not padded to a target count. The library grows as projects are completed and documented.
+> Current catalogue: **2 completed hardware projects**. This is intentionally not padded to a target count. The library grows as projects are completed and documented.
 
 ## What this repository is
 
 - A searchable index by board, difficulty, category, technology, language and project name.
 - A detailed build record for each completed project: purpose, prerequisites, bill of materials, wiring, code, setup, steps, expected result, testing, troubleshooting and references.
 - A consistent template and validation tool so future additions are documented the same way.
-- India-aware parts guidance in INR where a project needs hardware. Prices are estimates captured when the project is documented; check seller, shipping and stock before buying.
+- India-aware parts guidance in INR where a project needs hardware. Prices are estimates captured when a project is documented; check seller, shipping and stock before buying.
 
 ## Browse the catalogue
 
 | Filter | Current contents |
 |---|---|
-| Boards | ESP32 has one verified project; ESP8266, Arduino and Raspberry Pi Pico are selected for future use but not yet represented by a completed project. |
-| Difficulty | Beginner: 1 |
-| Categories | Embedded foundations: 1; the other selected categories currently have no completed entries. |
-| Languages | C++ / Arduino framework: 1 |
+| Boards | ESP32: 2 projects; ESP8266, Arduino and Raspberry Pi Pico: selected for future use, with no completed projects yet. |
+| Difficulty | Beginner: 2 |
+| Categories | Embedded foundations: 1; Wireless and networking: 1; other selected categories: 0. |
+| Languages | C++ / Arduino framework: 2. Python versions are added only after separately being built and validated. |
 
-Open [`catalog/projects.json`](catalog/projects.json) for machine-readable metadata or [`catalog/PROJECT_INDEX.csv`](catalog/PROJECT_INDEX.csv) for a spreadsheet-friendly index.
+Open [catalog/projects.json](catalog/projects.json) for machine-readable metadata or [catalog/PROJECT_INDEX.csv](catalog/PROJECT_INDEX.csv) for a spreadsheet-friendly index.
 
 ### Search from the terminal
 
 Requires Python 3.9+; no third-party packages are needed.
 
-```bash
+~~~bash
 python3 tools/catalog.py --list
 python3 tools/catalog.py --board ESP32
 python3 tools/catalog.py --difficulty beginner
-python3 tools/catalog.py --category "Embedded foundations"
-python3 tools/catalog.py --search serial
+python3 tools/catalog.py --category "Wireless and networking"
+python3 tools/catalog.py --search wifi
 python3 tools/catalog.py --language C++
-python3 tools/catalog.py --tag hello-world
-```
+python3 tools/catalog.py --tag passive-scan
+~~~
 
 ## Completed projects
 
@@ -45,11 +45,21 @@ python3 tools/catalog.py --tag hello-world
 - **Status:** Built and verified on 31 October 2026
 - **Result:** Firmware uploaded successfully; serial output observed at 115200 baud.
 
-This is a board bring-up exercise, not yet a sensor or networked IoT application. It verifies the development toolchain, USB serial connection, upload process and serial monitor.
+This is a board bring-up exercise. It verifies the development toolchain, USB serial connection, upload process and serial monitor.
+
+### 2. [ESP32 Passive Wi-Fi Scanner](projects/esp32/02-wifi-scanner/README.md)
+
+- **Board:** Espressif ESP32-DevKitC-32UE (ESP32-WROOM-32UE module)
+- **Difficulty:** Beginner
+- **Status:** Built with limitations on 31 October 2026
+- **Result:** Repeated passive 2.4 GHz scans displayed SSID, RSSI, channel and advertised security mode. One to five networks were observed per scan in the supplied session.
+- **Known limitation:** Occasional malformed serial characters appeared around some output blocks; their cause has not been isolated. Nearby SSID names are omitted from public evidence for privacy.
+
+The scan is a local observation exercise. It does not join networks, collect credentials, capture user traffic or disrupt wireless communications.
 
 ## Repository structure
 
-```text
+~~~text
 .
 ├── README.md
 ├── CONTRIBUTING.md
@@ -60,11 +70,16 @@ This is a board bring-up exercise, not yet a sensor or networked IoT application
 │   └── CATEGORIES.md
 ├── projects/
 │   └── esp32/
-│       └── 01-hello-esp32/
+│       ├── 01-hello-esp32/
+│       │   ├── README.md
+│       │   ├── metadata.json
+│       │   ├── VALIDATION.md
+│       │   └── src/hello_esp32.ino
+│       └── 02-wifi-scanner/
 │           ├── README.md
 │           ├── metadata.json
 │           ├── VALIDATION.md
-│           └── src/hello_esp32.ino
+│           └── src/wifi_scanner.ino
 ├── docs/
 │   ├── BOARD_SUPPORT.md
 │   └── PROJECT_LIFECYCLE.md
@@ -74,31 +89,31 @@ This is a board bring-up exercise, not yet a sensor or networked IoT application
 └── tools/
     ├── catalog.py
     └── validate_catalog.py
-```
+~~~
 
 ## Current board scope
 
-The intended board families are ESP32, ESP8266, Arduino and Raspberry Pi Pico. Only the ESP32-DevKitC-32UE has been used and verified in this repository so far. See [`docs/BOARD_SUPPORT.md`](docs/BOARD_SUPPORT.md) for exact status; selected does not mean tested.
+The intended board families are ESP32, ESP8266, Arduino and Raspberry Pi Pico. Only the ESP32-DevKitC-32UE has completed projects so far. See [docs/BOARD_SUPPORT.md](docs/BOARD_SUPPORT.md) for exact status; selected does not mean tested.
 
 ## Add a project
 
 1. Build it on real hardware or in a clearly identified simulator.
 2. Capture the exact board/module, framework/core version, wiring, dependencies and test evidence.
-3. Copy `_templates/project/` into a new folder under `projects/<board>/`.
-4. Complete every applicable section. Mark genuinely inapplicable sections as `Not applicable` and explain why.
-5. Add its metadata to `catalog/projects.json` and `catalog/PROJECT_INDEX.csv`.
-6. Run `python3 tools/validate_catalog.py` and check that `python3 tools/catalog.py --list` shows the project.
+3. Copy _templates/project/ into a new folder under projects/<board>/.
+4. Complete every applicable section. Mark genuinely inapplicable sections as Not applicable and explain why.
+5. Add its metadata to catalog/projects.json and catalog/PROJECT_INDEX.csv.
+6. Run python3 tools/validate_catalog.py and check that python3 tools/catalog.py --list shows the project.
 7. Commit the documentation and code together.
 
 Do not add planned projects as catalogue entries. A future idea can stay in a personal note outside the completed-project index until it is built.
 
 ## Programming-language policy
 
-Support both C/C++ and Python where each is appropriate and actually tested. Microcontroller firmware may use C/C++ while a laptop-side tool may use Python. Do not create a second-language version just to satisfy a checklist; add it only when it has been built and validated. The current serial bring-up sketch is C++ only.
+Support both C/C++ and Python where each is appropriate and actually tested. Microcontroller firmware may use C/C++ while a laptop-side tool may use Python. Do not create a second-language version just to satisfy a checklist; add it only when it has been built and validated. Both current projects use C++ firmware; no Python implementation has been tested yet.
 
 ## License
 
-No license has been selected yet, so this repository intentionally has no `LICENSE` file. Choose a license before inviting reuse or publishing it as an open-source project.
+No license has been selected yet, so this repository intentionally has no LICENSE file. Choose a license before inviting reuse or publishing it as an open-source project.
 
 ## Safety and responsible use
 
