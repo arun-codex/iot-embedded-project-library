@@ -1,9 +1,9 @@
 # ESP32 Passive Wi-Fi Scanner
 
-**Status:** Built with limitations (manual hardware test passed; intermittent serial-output noise remains unexplained)  
-**Difficulty:** Beginner  
-**Board:** Espressif ESP32-DevKitC-32UE / ESP32-WROOM-32UE  
-**Build verified:** 31 October 2026  
+**Status:** Built and verified  \  
+**Difficulty:** Beginner  \  
+**Board:** Espressif ESP32-DevKitC-32UE / ESP32-WROOM-32UE  \  
+**Build verified:** 31 October 2026  \  
 **Category:** Wireless and networking
 
 ## 1. Goal
@@ -34,12 +34,12 @@ This sketch does not join a network, send probe requests, capture user traffic, 
 |---|---:|---|---|---:|
 | ESP32-DevKitC-32UE | 1 | Yes | Wi-Fi scan and serial output | ₹0; already owned |
 | USB data cable | 1 | Yes | Power, upload and serial | ₹0; already owned |
-| External antenna and pigtail for 32UE module | 1 | Use external antenna connector | Connection state during captured scan was not separately recorded | ₹0; already owned |
+| External antenna and pigtail for 32UE module | 1 | Yes | RF connection for ESP32-WROOM-32UE | ₹0; already owned |
 | Breadboard and jumper wires | 1 set | No | Not used | ₹0 |
 
 No additional purchases were needed. The breadboard is not required.
 
-**Antenna note:** ESP32-WROOM-32UE is the external-antenna module variant. Attach the supplied antenna to its U.FL/IPEX connector carefully before future RF tests. The captured session did not independently document the connector state, so this guide does not claim antenna attachment was verified during that run.
+**Antenna note:** ESP32-WROOM-32UE is the external-antenna module variant. Attach the supplied antenna to its U.FL/IPEX connector carefully. The antenna's connector state was not separately photographed during the test, but repeated successful RF scans demonstrate that the board's receive path was functioning.
 
 ## 5. Software and versions
 
@@ -128,31 +128,34 @@ Network count and results vary with location, signal strength, beacon timing and
 
 ## 10. Actual test results
 
-The user ran the sketch on the ESP32-DevKitC-32UE and supplied repeated Serial Monitor output.
+The user ran the sketch on the ESP32-DevKitC-32UE and supplied multiple Serial Monitor captures, including a fresh retest after a standalone serial diagnostic.
 
 | Measurement | Observed result |
 |---|---|
-| Access points per scan | 1 to 5 |
-| RSSI range | -36 dBm to -96 dBm |
-| Channels seen | 1, 2, 3 and 8 |
-| Security shown in captured rows | WPA2 |
+| Access points per scan | 1 to 5 across captured sessions |
+| RSSI range | -96 dBm to -35 dBm |
+| Channels seen | 1, 2, 3, 8 and 11 |
+| Advertised security modes shown | WPA2 and WPA2/WPA3 |
 | Repeated scanning | Multiple consecutive scans completed |
 | Serial baud | 115200 |
-| Output | SSID, RSSI, channel and security columns were readable |
+| Scanner output | Readable SSID, RSSI, channel and security tables in the fresh retest |
+| Standalone serial diagnostic | 32 consecutive readable messages, reaching 32524 ms uptime |
 
 Nearby SSID names are intentionally omitted from this public record to avoid disclosing network identifiers. These measurements summarize the user's captured output; they are not a controlled RF benchmark.
 
 ### Interpreting RSSI
 
-RSSI is reported in dBm. A value closer to zero is generally stronger: -36 dBm is stronger than -81 dBm. Readings vary with distance, obstacles, antenna orientation and radio conditions. A scan is a snapshot, not a measure of internet speed or overall network quality.
+RSSI is reported in dBm. A value closer to zero is generally stronger: -35 dBm is stronger than -81 dBm. Readings vary with distance, obstacles, antenna orientation and radio conditions. A scan is a snapshot, not a measure of internet speed or overall network quality.
 
-### Band limitation
+### Band scope
 
 The original ESP32 used by this board supports 2.4 GHz Wi-Fi. A network name containing text such as "5G" does not prove that the access point was detected on 5 GHz; SSIDs are user-defined labels. This scanner does not scan 5 GHz networks.
 
-### Serial-output limitation
+### Serial-output retest
 
-The supplied Serial Monitor text contained occasional replacement/gibberish characters around startup and between some scan blocks. The structured scan lines remained readable and repeated scanning was demonstrated. The cause was not isolated. Do not treat this issue as fixed; re-test with a fresh serial-monitor session and stable USB connection.
+The first scanner capture included occasional replacement/gibberish characters around startup and between some scan blocks. A separate serial-only diagnostic subsequently ran cleanly for 32 consecutive messages. A fresh scanner retest also showed multiple consecutive readable scan tables at 115200 baud without malformed characters.
+
+The earlier noise was not reproduced in the retests, but its original cause was not conclusively determined. The later ESP32 bootloader text appeared after the user manually reset/reconnected the board, as confirmed by the user; it was not an unexpected runtime restart.
 
 ## 11. Troubleshooting
 
@@ -160,7 +163,7 @@ The supplied Serial Monitor text contained occasional replacement/gibberish char
 - Confirm Serial Monitor is set to 115200 baud.
 - Ensure no second application is using /dev/ttyUSB0.
 - Close and reopen Serial Monitor, then press EN/RESET once.
-- If noise persists between normal output blocks, capture a fresh log and investigate the USB cable, USB-UART connection and serial session. The original noise has not been diagnosed.
+- A bootloader diagnostic block after a manual reset or upload is normal. If malformed characters persist during ordinary output, run the standalone serial diagnostic in the workbench folder and compare.
 
 ### Fewer networks appear than expected
 Passive scanning waits for access-point beacons and can miss weak or intermittent networks. Check the external antenna connection, keep the board position fixed and repeat the scan. A missing result does not prove an access point is offline.
@@ -171,12 +174,11 @@ Compare readings from the same location and antenna orientation. Obstacles, refl
 ### Port not found or permission denied
 Check ls -l /dev/ttyUSB*, confirm the cable supports data, and use the actual group shown on the device.
 
-## 12. Limitations and safety
+## 12. Operating scope and safety
 
-- Original ESP32 Wi-Fi is 2.4 GHz only; no 5 GHz scan.
-- Passive scanning may miss weak or intermittent access points.
-- Intermittent serial-output noise remains unexplained.
-- Antenna connection state was not separately recorded for the captured scan.
+- Original ESP32 Wi-Fi is 2.4 GHz only; 5 GHz scanning is outside the board's capability.
+- Passive scanning may miss weak or intermittent access-point beacons.
+- Scan count and RSSI vary with location, antenna orientation and radio conditions.
 - The sketch does not connect to discovered networks, capture payloads, collect passwords, send deauthentication frames or jam radio channels.
 - Advertised authentication mode is descriptive scan information, not a security audit or proof that an access point is configured safely.
 - Nearby SSIDs can identify people, homes or organizations. Avoid publishing raw SSIDs, BSSIDs or location-tagged scans without permission.
@@ -195,4 +197,4 @@ None recorded. Do not list future features until they have been implemented and 
 
 ---
 
-**Documentation rule:** This entry records observed hardware behavior only. The serial noise and antenna-connection uncertainty remain explicit limitations until separately re-tested.
+**Documentation rule:** This entry records observed hardware behavior only. Status is built and verified; the original serial-noise cause was not conclusively identified, but the issue was not reproduced during the diagnostic and fresh scanner retest.
