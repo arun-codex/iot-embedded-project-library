@@ -6,7 +6,7 @@ Categories are facets, not project ideas. A category may have zero completed ent
 |---|---:|
 | Embedded foundations | 1 |
 | IoT and sensors | 0 |
-| Wireless and networking | 0 |
+| Wireless and networking | 1 |
 | Cybersecurity projects | 0 |
 | Home automation | 0 |
 | Smart devices and wearables | 0 |
