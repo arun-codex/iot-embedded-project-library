@@ -4,7 +4,7 @@ A board family being selected for the library is not the same as having a tested
 
 | Board family | Current status | Verified model |
 |---|---|---|
-| ESP32 | Two projects completed: serial bring-up (built and verified) and passive Wi-Fi scanner (built with a documented serial-output limitation) | ESP32-DevKitC-32UE / ESP32-WROOM-32UE |
+| ESP32 | Two projects built and verified: serial bring-up and passive Wi-Fi scanning | ESP32-DevKitC-32UE / ESP32-WROOM-32UE |
 | ESP8266 | Selected; no completed project yet | Not yet tested |
 | Arduino | Selected; no completed project yet | Not yet tested; exact model TBD |
 | Raspberry Pi Pico | Selected; no completed project yet | Not yet tested; Pico vs Pico W TBD |
@@ -15,7 +15,7 @@ The owner identified the board as ESP32-DevKitC-32UE. The official Espressif Dev
 
 The ESP32 Dev Module profile was used successfully in Arduino IDE 2.3.10 with Arduino-ESP32 core 3.3.12.
 
-The second project used the same board and software configuration for passive 2.4 GHz Wi-Fi scanning. Repeated scan output was observed. Intermittent malformed serial characters were also reported and remain unexplained; see the scanner project's validation record.
+The second project used the same board and software configuration for passive 2.4 GHz Wi-Fi scanning. Repeated scan output was observed with readable SSID, RSSI, channel and advertised-security columns. A standalone serial-only diagnostic also ran cleanly for 32 messages, and the fresh scanner retest did not reproduce the earlier malformed serial output. The original noise cause was not conclusively identified; see the scanner project's validation record.
 
 These records document the working configuration; they are not a claim that every board setting or every DevKitC revision is identical.
 
