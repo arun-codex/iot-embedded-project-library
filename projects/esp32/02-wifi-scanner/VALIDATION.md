@@ -1,34 +1,49 @@
 # Validation record — ESP32 Passive Wi-Fi Scanner
 
 - **Date:** 2026-10-31
-- **Status:** Built with limitations; primary scan behavior observed
+- **Status:** Passed — built and verified on physical hardware
 - **Board:** ESP32-DevKitC-32UE / ESP32-WROOM-32UE
+- **Detected chip (from prior bring-up):** ESP32-D0WD-V3, revision 3.1
 - **Board profile:** ESP32 Dev Module
 - **Arduino IDE:** 2.3.10
 - **Arduino-ESP32 core:** 3.3.12
 - **Serial port observed:** /dev/ttyUSB0
 - **Serial baud:** 115200
 
-## Checks supported by supplied evidence
+## Checks completed
 
+- [x] Sketch compiled and uploaded to the physical ESP32.
 - [x] Scanner startup banner appeared.
-- [x] Wi-Fi scan completed repeatedly.
-- [x] One to five access points appeared in individual scans.
+- [x] Wi-Fi scans completed repeatedly.
+- [x] One to five access points appeared in individual scans across the captured sessions.
 - [x] SSID, RSSI, channel and advertised security columns were displayed.
-- [x] RSSI values varied from -36 dBm to -96 dBm in the captured session.
-- [x] Channels 1, 2, 3 and 8 appeared in captured results.
-- [x] WPA2 was displayed for the captured entries.
-- [ ] Clean serial output with no malformed characters has not been confirmed.
-- [ ] External antenna attachment during this exact scan session was not separately recorded.
-- [ ] No automated test suite or independent second-board replication was performed.
+- [x] RSSI values across the captured sessions ranged from -96 dBm to -35 dBm.
+- [x] Channels 1, 2, 3, 8 and 11 appeared in captured results.
+- [x] WPA2 and WPA2/WPA3 advertised modes appeared in captured results.
+- [x] Standalone serial diagnostic ran cleanly at 115200 baud for 32 sequential messages, reaching 32524 ms uptime.
+- [x] Fresh scanner retest showed multiple consecutive readable scan tables at 115200 baud.
+- [x] No malformed serial characters appeared in the supplied fresh scanner retest.
+- [x] The ESP32 boot log was explained by the user as following a manual EN reset / USB reconnect, not an unexpected runtime restart.
 
-## Evidence and privacy
+## Serial-noise investigation
 
-Evidence is the user's supplied Serial Monitor text in the project build conversation. Real nearby SSID names were intentionally excluded from this public record. The listed measurements are an observational summary, not a controlled RF test.
+The first scanner capture included occasional replacement/gibberish characters around startup and between some scan blocks. The standalone serial-only diagnostic subsequently produced clean output for 32 consecutive messages. A fresh Wi-Fi scanner retest also produced clean, readable output across repeated scan tables.
 
-## Follow-up validation
+The earlier noise was therefore **not reproduced** in the diagnostic or fresh scanner retest. Its original cause was not conclusively identified, so this record does not claim a proven root cause. The manually initiated reset later produced the normal ESP32 bootloader log.
 
-1. Confirm the external antenna is securely connected to the ESP32-WROOM-32UE antenna connector before the next scan.
-2. Reopen Serial Monitor at 115200 baud and perform a fresh reset.
-3. Record whether malformed characters recur between scan blocks.
-4. Repeat the scan from one fixed location and orientation if comparing RSSI stability.
+## Observed measurements
+
+The user-provided scans showed between one and five networks per scan, with RSSI values ranging from -96 dBm to -35 dBm. Observed channels were 1, 2, 3, 8 and 11. WPA2 and WPA2/WPA3 were displayed.
+
+Real nearby SSID names are intentionally omitted from this public record to protect network privacy. These are observational measurements, not a controlled RF benchmark.
+
+## Scope notes (not build failures)
+
+- The original ESP32 radio used here operates on 2.4 GHz Wi-Fi; it does not scan 5 GHz.
+- Passive scans can miss weak or intermittent access-point beacons.
+- Scan count and RSSI vary with location, antenna orientation and radio conditions.
+- The external antenna is required for the ESP32-WROOM-32UE module's RF operation. The user owns the supplied antenna; its physical connector state was not separately photographed during this test.
+
+## Evidence boundary
+
+Validation is based on the user's supplied Arduino IDE upload information, Serial Monitor screenshots and pasted scan output in the build conversation. No automated test suite or independent second-board replication was performed.
