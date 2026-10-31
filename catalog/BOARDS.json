@@ -4,8 +4,8 @@
     "selected": true,
     "tested_in_repository": true,
     "tested_model": "ESP32-DevKitC-32UE",
-    "completed_project_count": 1,
-    "note": "One physical board bring-up project has been completed and documented."
+    "completed_project_count": 2,
+    "note": "Two physical ESP32 projects have been completed and documented: serial bring-up and passive Wi-Fi scanning. The scanner retains an unresolved serial-output-noise limitation."
   },
   {
     "family": "ESP8266",
