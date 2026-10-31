@@ -20,7 +20,7 @@
     "board_family": "ESP32",
     "board_model": "ESP32-DevKitC-32UE",
     "difficulty": "beginner",
-    "status": "built-with-limitations",
+    "status": "built-and-verified",
     "category": ["Wireless and networking"],
     "languages": ["C++"],
     "technologies": ["Wi-Fi passive scanning", "RSSI", "802.11 channels", "serial output"],
