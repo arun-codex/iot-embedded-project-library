@@ -12,5 +12,19 @@
     "technologies": ["serial communication", "firmware upload"],
     "tags": ["first-upload", "hello-world", "serial-monitor"],
     "built_date": "2026-10-31"
+  },
+  {
+    "id": "esp32-wifi-passive-scan-002",
+    "name": "ESP32 Passive Wi-Fi Scanner",
+    "path": "projects/esp32/02-wifi-scanner/README.md",
+    "board_family": "ESP32",
+    "board_model": "ESP32-DevKitC-32UE",
+    "difficulty": "beginner",
+    "status": "built-with-limitations",
+    "category": ["Wireless and networking"],
+    "languages": ["C++"],
+    "technologies": ["Wi-Fi passive scanning", "RSSI", "802.11 channels", "serial output"],
+    "tags": ["esp32", "wifi", "passive-scan", "rssi", "wireless-recon"],
+    "built_date": "2026-10-31"
   }
 ]
