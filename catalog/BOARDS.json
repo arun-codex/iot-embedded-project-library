@@ -4,8 +4,8 @@
     "selected": true,
     "tested_in_repository": true,
     "tested_model": "ESP32-DevKitC-32UE",
-    "completed_project_count": 2,
-    "note": "Two physical ESP32 projects have been completed and verified: serial bring-up and passive 2.4 GHz Wi-Fi scanning. The scanner's initial serial-output noise was not reproduced in subsequent diagnostic and scanner retests; its original cause was not conclusively determined."
+    "completed_project_count": 3,
+    "note": "Three physical ESP32 projects have been completed and verified: serial bring-up, passive 2.4 GHz Wi-Fi scanning and passive BLE advertisement scanning."
   },
   {
     "family": "ESP8266",
