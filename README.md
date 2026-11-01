@@ -67,6 +67,17 @@ The scan is a local observation exercise. It does not join networks, collect cre
 
 This project observes BLE advertisements only. It does not connect, pair, read characteristics or collect raw advertising payloads.
 
+## Experimental workbench — not in the completed catalogue
+
+### [ESP32 Wi-Fi Recon Dashboard + Python collector](experiments/esp32-wifi-recon-dashboard/README.md)
+
+- **Status:** Experimental; not counted as a completed project.
+- **Python collector:** Successfully run in the supplied hardware session for 10 scans, recording 45 total access-point observations and generating two charts.
+- **Browser dashboard:** Still unresolved. The user's V3.3 browser capture continued to show “Connecting…” and blank metrics/table, so the dashboard is not described as working.
+- **Why it is here:** Preserve the tested host-side collector and its setup/validation notes without breaking the repository's build-first catalogue policy.
+
+See the experiment's [validation record](experiments/esp32-wifi-recon-dashboard/VALIDATION.md). The example scan data is not committed because SSIDs and BSSIDs can expose nearby networks.
+
 ## Repository structure
 
 ~~~text
@@ -87,6 +98,12 @@ This project observes BLE advertisements only. It does not connect, pair, read c
 │           ├── metadata.json
 │           ├── VALIDATION.md
 │           └── 03-ble-scanner.ino
+├── experiments/
+│   └── esp32-wifi-recon-dashboard/
+│       ├── README.md
+│       ├── VALIDATION.md
+│       ├── requirements.txt
+│       └── esp32_wifi_collector.py
 ├── docs/
 │   ├── BOARD_SUPPORT.md
 │   └── PROJECT_LIFECYCLE.md
@@ -116,7 +133,7 @@ Do not add planned projects as catalogue entries. A future idea can stay in a pe
 
 ## Programming-language policy
 
-Support both C/C++ and Python where each is appropriate and actually tested. Microcontroller firmware may use C/C++ while a laptop-side tool may use Python. Do not create a second-language version just to satisfy a checklist; add it only when it has been built and validated. All three current projects use C++ firmware; no Python implementation has been tested yet.
+Support both C/C++ and Python where each is appropriate and actually tested. Microcontroller firmware may use C/C++ while a laptop-side tool may use Python. Do not create a second-language version just to satisfy a checklist; add it only when it has been built and validated. All three completed catalogue projects use C++ firmware. A laptop-side Python collector has been run successfully as an experimental tool; it remains outside the catalogue while the dashboard UI is unresolved.
 
 ## License
 
