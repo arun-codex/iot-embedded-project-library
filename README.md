@@ -2,7 +2,7 @@
 
 A build-log-driven catalogue of IoT, electronics, embedded and board projects. **A project is added to the catalogue only after it has actually been built and its results have been checked.** Ideas, wish lists and untested code do not count as projects here.
 
-> Current catalogue: **2 completed and verified hardware projects**. This is intentionally not padded to a target count. The library grows as projects are completed and documented.
+> Current catalogue: **3 completed and verified hardware projects**. This is intentionally not padded to a target count. The library grows as projects are completed and documented.
 
 ## What this repository is
 
@@ -15,10 +15,10 @@ A build-log-driven catalogue of IoT, electronics, embedded and board projects. *
 
 | Filter | Current contents |
 |---|---|
-| Boards | ESP32: 2 projects; ESP8266, Arduino and Raspberry Pi Pico: selected for future use, with no completed projects yet. |
-| Difficulty | Beginner: 2 |
-| Categories | Embedded foundations: 1; Wireless and networking: 1; other selected categories: 0. |
-| Languages | C++ / Arduino framework: 2. Python versions are added only after separately being built and validated. |
+| Boards | ESP32: 3 projects; ESP8266, Arduino and Raspberry Pi Pico: selected for future use, with no completed projects yet. |
+| Difficulty | Beginner: 3 |
+| Categories | Embedded foundations: 1; Wireless and networking: 2; other selected categories: 0. |
+| Languages | C++ / Arduino framework: 3. Python versions are added only after separately being built and validated. |
 
 Open [catalog/projects.json](catalog/projects.json) for machine-readable metadata or [catalog/PROJECT_INDEX.csv](catalog/PROJECT_INDEX.csv) for a spreadsheet-friendly index.
 
@@ -31,9 +31,9 @@ python3 tools/catalog.py --list
 python3 tools/catalog.py --board ESP32
 python3 tools/catalog.py --difficulty beginner
 python3 tools/catalog.py --category "Wireless and networking"
-python3 tools/catalog.py --search wifi
+python3 tools/catalog.py --search ble
 python3 tools/catalog.py --language C++
-python3 tools/catalog.py --tag passive-scan
+python3 tools/catalog.py --tag bluetooth-low-energy
 ~~~
 
 ## Completed projects
@@ -57,6 +57,16 @@ This is a board bring-up exercise. It verifies the development toolchain, USB se
 
 The scan is a local observation exercise. It does not join networks, collect credentials, capture user traffic or disrupt wireless communications. Nearby SSID names are omitted from public test evidence for privacy.
 
+### 3. [ESP32 BLE Scanner](projects/esp32/03-ble-scanner/README.md)
+
+- **Board:** Espressif ESP32-DevKitC-32UE (ESP32-WROOM-32UE module)
+- **Difficulty:** Beginner
+- **Status:** Built and verified on 1 November 2026
+- **Result:** Repeated passive BLE scans displayed advertised names where present, RSSI, advertised service UUID counts and connectability indications. Approximately two to four scan-result records appeared in the supplied captures.
+- **Validation note:** A block of replacement characters appeared around a firmware/boot transition in the pasted capture; subsequent scan tables were readable. The cause was not established. Nearby BLE device names and addresses are omitted from public evidence.
+
+This project observes BLE advertisements only. It does not connect, pair, read characteristics or collect raw advertising payloads.
+
 ## Repository structure
 
 ~~~text
@@ -71,15 +81,12 @@ The scan is a local observation exercise. It does not join networks, collect cre
 ├── projects/
 │   └── esp32/
 │       ├── 01-hello-esp32/
-│       │   ├── README.md
-│       │   ├── metadata.json
-│       │   ├── VALIDATION.md
-│       │   └── src/hello_esp32.ino
-│       └── 02-wifi-scanner/
+│       ├── 02-wifi-scanner/
+│       └── 03-ble-scanner/
 │           ├── README.md
 │           ├── metadata.json
 │           ├── VALIDATION.md
-│           └── src/wifi_scanner.ino
+│           └── 03-ble-scanner.ino
 ├── docs/
 │   ├── BOARD_SUPPORT.md
 │   └── PROJECT_LIFECYCLE.md
@@ -109,7 +116,7 @@ Do not add planned projects as catalogue entries. A future idea can stay in a pe
 
 ## Programming-language policy
 
-Support both C/C++ and Python where each is appropriate and actually tested. Microcontroller firmware may use C/C++ while a laptop-side tool may use Python. Do not create a second-language version just to satisfy a checklist; add it only when it has been built and validated. Both current projects use C++ firmware; no Python implementation has been tested yet.
+Support both C/C++ and Python where each is appropriate and actually tested. Microcontroller firmware may use C/C++ while a laptop-side tool may use Python. Do not create a second-language version just to satisfy a checklist; add it only when it has been built and validated. All three current projects use C++ firmware; no Python implementation has been tested yet.
 
 ## License
 
