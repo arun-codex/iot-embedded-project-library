@@ -26,5 +26,19 @@
     "technologies": ["Wi-Fi passive scanning", "RSSI", "802.11 channels", "serial output"],
     "tags": ["esp32", "wifi", "passive-scan", "rssi", "wireless-recon"],
     "built_date": "2026-10-31"
+  },
+  {
+    "id": "esp32-ble-passive-scan-003",
+    "name": "ESP32 BLE Scanner",
+    "path": "projects/esp32/03-ble-scanner/README.md",
+    "board_family": "ESP32",
+    "board_model": "ESP32-DevKitC-32UE",
+    "difficulty": "beginner",
+    "status": "built-and-verified",
+    "category": ["Wireless and networking"],
+    "languages": ["C++"],
+    "technologies": ["BLE passive scanning", "BLE advertising", "RSSI", "advertised service UUIDs", "serial output"],
+    "tags": ["esp32", "ble", "bluetooth-low-energy", "passive-scan", "rssi"],
+    "built_date": "2026-11-01"
   }
 ]
