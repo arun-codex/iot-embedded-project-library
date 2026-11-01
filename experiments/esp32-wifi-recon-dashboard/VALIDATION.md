@@ -7,9 +7,9 @@
 | ESP32 passive scan pipeline | Passed in the supplied test session | Repeated all-channel scans returned changing AP counts. |
 | Python collector | Passed in the supplied test session | Completed 10 scans and wrote 45 total observations to CSV. |
 | Python CSV output | Passed | Timestamped CSV created. |
-| Python visualizations | Passed | \`signal_strength.png\` and \`channel_distribution.png\` created. |
-| V3.1 history API | Passed | \`/api/history\` returned HTTP 200 and a scan history record with four AP observations. |
-| V3.2 networks/history API | Passed after a scan | \`/api/networks\` and \`/api/history\` returned HTTP 200; history contained four AP observations. |
+| Python visualizations | Passed | `signal_strength.png` and `channel_distribution.png` created. |
+| V3.1 history API | Passed | `/api/history` returned HTTP 200 and a scan history record with four AP observations. |
+| V3.2 networks/history API | Passed after a scan | `/api/networks` and `/api/history` returned HTTP 200; history contained four AP observations. |
 | V3.3 browser dashboard | **Not passed / unresolved** | Browser still displays “Connecting…” and blank metric cards/table. |
 
 ## Python collector test supplied by the user
@@ -40,7 +40,7 @@ Raw SSIDs and BSSIDs are intentionally not reproduced in this public validation 
 - The start-scan endpoint returned HTTP 202 Accepted.
 - The networks endpoint returned JSON after scan completion.
 - The history endpoint returned a stored scan snapshot on V3.1 and V3.2 test sessions.
-- In one pre-scan V3.2 request, \`/api/networks\` correctly returned \`count: 0\`; after starting a scan, the history endpoint contained four observations.
+- In one pre-scan V3.2 request, `/api/networks` correctly returned `count: 0`; after starting a scan, the history endpoint contained four observations.
 
 These API observations are not proof that the browser UI works.
 
@@ -57,6 +57,6 @@ Do not mark the dashboard project as complete or add it to the repository's comp
 
 ## Local static checks
 
-- \`python3 -m py_compile esp32_wifi_collector.py\`: passed in the authoring environment.
+- `python3 -m py_compile esp32_wifi_collector.py`: passed in the authoring environment.
 - Physical device test: based on the user's supplied terminal output, not a test performed by the repository maintainer.
 - Browser dashboard: unresolved as described above.
