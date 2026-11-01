@@ -188,6 +188,12 @@ Check ls -l /dev/ttyUSB*, confirm the cable supports data, and use the actual gr
 
 None recorded. Do not list future features until they have been implemented and tested.
 
+## Build evidence
+
+![ESP32 passive Wi-Fi scan — actual Serial Monitor screenshot with SSIDs redacted](evidence/wifi-scan-redacted.jpg)
+
+Actual Serial Monitor evidence from the hardware test. Nearby SSID labels have been masked for privacy; the scan output, RSSI, channel and advertised security fields remain visible.
+
 ## 14. References
 
 - Espressif, [Arduino-ESP32 Wi-Fi API — WiFiScan](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html)

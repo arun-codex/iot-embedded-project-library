@@ -201,6 +201,12 @@ Check ls -l /dev/ttyUSB*, confirm the cable supports data, and use the actual gr
 
 None recorded yet. Do not list future ideas as completed improvements.
 
+## Build evidence
+
+![ESP32 BLE scan — actual Serial Monitor screenshot with device name redacted](evidence/ble-scan-redacted.jpg)
+
+Actual Serial Monitor evidence from the hardware test. A nearby device name has been masked for privacy; BLE scan records, RSSI, advertised service counts and connectability fields remain visible.
+
 ## 14. References
 
 - Espressif, [Arduino-ESP32 BLE API and scan example](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/ble.html)

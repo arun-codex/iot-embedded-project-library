@@ -157,6 +157,12 @@ Try a known-good data cable, a different USB port, and then check `ls -l /dev/tt
 
 No extensions are included in this completed project. Add an extension only after building and testing it, and document it as a separate project or clearly tested revision.
 
+## Build evidence
+
+![ESP32 serial bring-up — actual Serial Monitor screenshot](evidence/serial-monitor.jpg)
+
+Screenshot from the physical ESP32-DevKitC-32UE test. It shows the uploaded sketch running and the serial output at 115200 baud.
+
 ## 12. References
 
 - Espressif, [ESP32-DevKitC user guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html)
