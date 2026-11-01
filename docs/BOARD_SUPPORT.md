@@ -4,7 +4,7 @@ A board family being selected for the library is not the same as having a tested
 
 | Board family | Current status | Verified model |
 |---|---|---|
-| ESP32 | Two projects built and verified: serial bring-up and passive Wi-Fi scanning | ESP32-DevKitC-32UE / ESP32-WROOM-32UE |
+| ESP32 | Three projects built and verified: serial bring-up, passive Wi-Fi scanning and passive BLE scanning | ESP32-DevKitC-32UE / ESP32-WROOM-32UE |
 | ESP8266 | Selected; no completed project yet | Not yet tested |
 | Arduino | Selected; no completed project yet | Not yet tested; exact model TBD |
 | Raspberry Pi Pico | Selected; no completed project yet | Not yet tested; Pico vs Pico W TBD |
@@ -15,7 +15,12 @@ The owner identified the board as ESP32-DevKitC-32UE. The official Espressif Dev
 
 The ESP32 Dev Module profile was used successfully in Arduino IDE 2.3.10 with Arduino-ESP32 core 3.3.12.
 
-The second project used the same board and software configuration for passive 2.4 GHz Wi-Fi scanning. Repeated scan output was observed with readable SSID, RSSI, channel and advertised-security columns. A standalone serial-only diagnostic also ran cleanly for 32 messages, and the fresh scanner retest did not reproduce the earlier malformed serial output. The original noise cause was not conclusively identified; see the scanner project's validation record.
+Three physical builds have been documented on this board:
+- Serial bring-up with USB serial output.
+- Passive 2.4 GHz Wi-Fi access-point scanning.
+- Passive Bluetooth Low Energy advertisement scanning.
+
+The BLE scanner displayed advertised device names where present, RSSI, advertised service UUID counts and connectability indications over repeated scans. A block of replacement characters appeared around a firmware/boot transition in the pasted capture; subsequent scan tables were readable. The cause of the earlier characters was not established. See the BLE project's validation record.
 
 These records document the working configuration; they are not a claim that every board setting or every DevKitC revision is identical.
 
